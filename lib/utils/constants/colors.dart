@@ -4,9 +4,10 @@ class FColors{
   FColors._();
 
   //App Basic Colors
-  static const Color primary = Color(0xFF4b68ff);
-  static const Color secondary = Color(0xFFFFE248);
-  static const Color accent = Color(0xFFb0c7ff);
+  static const Color primary = Color(0xFFF28907);
+  static const Color secondary = Color(0xFF8C4303);
+  static const Color accent = Color(0xFFD9AC84);
+  static const Color brightOrange = Color(0xFFF25C05);
 
   //Gradient Colors
   static const Gradient linearGradient = LinearGradient(
@@ -33,12 +34,12 @@ class FColors{
   static Color darkContainer = FColors.textWhite.withOpacity(0.1);
 
   //Button Colors
-  static const Color buttonPrimary = Color(0xFF4b68ff);
+  static const Color buttonPrimary = Color(0xFFF28907);
   static const Color buttonSecondary = Color(0xFF6C757D);
   static const Color buttonDisabled = Color(0xFFC4C4C4);
 
   //Border Colors
-  static const Color borderPrimary = Color(0xFF4b68ff);
+  static const Color borderPrimary = Color(0xFFF28907);
   static const Color borderSecondary = Color(0xFF6C757D);
 
   //Error and Validation colors

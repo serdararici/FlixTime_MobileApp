@@ -1,3 +1,4 @@
+import 'package:flix_time/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_themes/appbar_theme.dart';
@@ -16,8 +17,8 @@ class FAppTheme {
     useMaterial3: true,
     //fontFamily: 'Poppins',
     brightness: Brightness.light,
-    primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    primaryColor: FColors.primary,
+    scaffoldBackgroundColor: FColors.light,
     textTheme: FAppTextTheme.lightTextTheme,
     chipTheme: FChipTheme.lightChipTheme,
     appBarTheme: FAppBarTheme.lightAppBarTheme,
@@ -31,8 +32,8 @@ class FAppTheme {
     useMaterial3: true,
     //fontFamily: 'Poppins',
     brightness: Brightness.dark,
-    primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.black,
+    primaryColor: FColors.primary,
+    scaffoldBackgroundColor: FColors.dark,
     textTheme: FAppTextTheme.darkTextTheme,
     chipTheme: FChipTheme.darkChipTheme,
     appBarTheme: FAppBarTheme.darkAppBarTheme,
