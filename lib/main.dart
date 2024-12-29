@@ -1,5 +1,5 @@
 import 'package:flix_time/ui/views/explore/exploreScreen.dart';
-import 'package:flix_time/ui/views/home/widgets/homeScreen.dart';
+import 'package:flix_time/ui/views/home/homeScreen.dart';
 import 'package:flix_time/utils/localization/localization_manager.dart';
 import 'package:flix_time/utils/theme/theme.dart';
 import 'package:flix_time/utils/theme/theme_manager.dart';
