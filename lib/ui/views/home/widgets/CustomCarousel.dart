@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flix_time/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -30,13 +31,28 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 return Container(
                   decoration: BoxDecoration(
                     color: FColors.primary,
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(FSizes.borderRadiusXLg),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(FSizes.borderRadiusXLg),
                     child: Image.network(
                       item,
                       fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) =>
+                      const Center(
+                        child: Icon(Icons.error, size: 50, color: Colors.red),
+                      ),
                     ),
                   ),
                 );
@@ -57,7 +73,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             },
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: FSizes.spaceBtwItems,),
         // Smooth Page Indicator
         SmoothPageIndicator(
           controller: PageController(initialPage: _currentIndex),

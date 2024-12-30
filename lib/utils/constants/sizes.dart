@@ -23,6 +23,10 @@ class FSizes {
   static const double buttonWidth = 120.0;
   static const double buttonElevation = 4.0;
 
+  // Floating Action Button Sizes
+  static const double fabRadius = 50.0;
+  static const double fabIconSize = 30.0;
+
   //Appbar height
   static const double appBarHeight = 56.0;
 
@@ -38,6 +42,7 @@ class FSizes {
   static const double borderRadiusSm = 4.0;
   static const double borderRadiusMd = 8.0;
   static const double borderRadiusLg = 12.0;
+  static const double borderRadiusXLg = 16.0;
 
   //Devider height
   static const double deviderHeight = 1.0;

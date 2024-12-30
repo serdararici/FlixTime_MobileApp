@@ -4,5 +4,14 @@
 
   "all": "All",
   "newMovies": "New Movies",
-  "popularMovies": "Popular Movies"
+  "popularMovies": "Popular Movies",
+
+  "explore": "Explore",
+
+
+  "watchList": "Watch List",
+
+  "profile": "Profile",
+
+  "settings": "Settings"
 }

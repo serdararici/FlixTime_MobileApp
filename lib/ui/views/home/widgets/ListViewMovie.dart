@@ -29,24 +29,31 @@ class ListViewMovie extends StatelessWidget {
             ),
             child: Column(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
-                  child: Image.network(
-                    movie.movieImageUrl, width: 200, height: 200, fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                              (loadingProgress.expectedTotalBytes ?? 1)
-                              : null,
-                        ),
-                      );
-                    },
-                    errorBuilder: (context, error, stackTrace) =>
-                    const Center(
-                      child: Icon(Icons.error, size: 50, color: Colors.red),
+                Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    color: FColors.grey,
+                    borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
+                    child: Image.network(
+                      movie.movieImageUrl, width: 200, height: 200, fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) =>
+                      const Center(
+                        child: Icon(Icons.error, size: 50, color: Colors.red),
+                      ),
                     ),
                   ),
                 ),

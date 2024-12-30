@@ -1,4 +1,5 @@
 import 'package:flix_time/utils/constants/colors.dart';
+import 'package:flix_time/utils/theme/custom_themes/bottom_navigation_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_themes/appbar_theme.dart';
@@ -27,6 +28,7 @@ class FAppTheme {
     elevatedButtonTheme: FAppElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: FOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: FTextFormFieldTheme.lightInputDecorationTheme,
+    bottomNavigationBarTheme: FBottomNavigationBarTheme.lightBottomNavigationBarTheme,
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -42,5 +44,6 @@ class FAppTheme {
     elevatedButtonTheme: FAppElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: FOutlinedButtonTheme.darkOutlinedButtonTheme,
     inputDecorationTheme: FTextFormFieldTheme.darkInputDecorationTheme,
+    bottomNavigationBarTheme: FBottomNavigationBarTheme.darkBottomNavigationBarTheme,
   );
 }
