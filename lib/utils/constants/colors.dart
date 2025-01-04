@@ -8,6 +8,7 @@ class FColors{
   static const Color secondary = Color(0xFF8C4303);
   static const Color accent = Color(0xFFD9AC84);
   static const Color brightOrange = Color(0xFFF25C05);
+  static const Color amber = Color(0xFFFFC107);
 
   //Gradient Colors
   static const Gradient linearGradient = LinearGradient(

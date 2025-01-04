@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flix_time/data/entity/movie.dart';
-import 'package:flix_time/ui/views/home/widgets/CustomCarousel.dart';
-import 'package:flix_time/ui/views/home/widgets/ListViewMovie.dart';
-import 'package:flix_time/ui/views/home/widgets/ListViewTitleRow.dart';
-import 'package:flix_time/utils/constants/colors.dart';
-import 'package:flix_time/utils/constants/sizes.dart';
-import 'package:flix_time/utils/constants/text_Strings.dart';
+import 'package:FlixTime/data/entity/movie.dart';
+import 'package:FlixTime/ui/views/home/widgets/CustomCarousel.dart';
+import 'package:FlixTime/ui/views/home/widgets/ListViewMovie.dart';
+import 'package:FlixTime/ui/views/home/widgets/ListViewTitleRow.dart';
+import 'package:FlixTime/utils/constants/colors.dart';
+import 'package:FlixTime/utils/constants/sizes.dart';
+import 'package:FlixTime/utils/constants/text_Strings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -45,11 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: FSizes.defaultSpace),
               ListViewTitleRow(title: localeManager.translate("newMovies"),),
               const SizedBox(height: FSizes.sm),
-              ListViewMovie(movieList: movieList,),
+              ListViewMovie(movieList: popularMovieList,),
               const SizedBox(height: FSizes.spaceBtwItems,),
               ListViewTitleRow(title: localeManager.translate("popularMovies"),),
               const SizedBox(height: FSizes.sm),
-              ListViewMovie(movieList: movieList,),
+              ListViewMovie(movieList: newMovieList,),
 
               // Example Button
               ElevatedButton(

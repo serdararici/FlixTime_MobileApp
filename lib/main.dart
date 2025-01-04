@@ -1,9 +1,9 @@
-import 'package:flix_time/ui/views/explore/exploreScreen.dart';
-import 'package:flix_time/ui/views/home/homeScreen.dart';
-import 'package:flix_time/ui/views/mainScreen.dart';
-import 'package:flix_time/utils/localization/localization_manager.dart';
-import 'package:flix_time/utils/theme/theme.dart';
-import 'package:flix_time/utils/theme/theme_manager.dart';
+import 'package:FlixTime/ui/views/explore/exploreScreen.dart';
+import 'package:FlixTime/ui/views/home/homeScreen.dart';
+import 'package:FlixTime/ui/views/mainScreen.dart';
+import 'package:FlixTime/utils/localization/localization_manager.dart';
+import 'package:FlixTime/utils/theme/theme.dart';
+import 'package:FlixTime/utils/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';

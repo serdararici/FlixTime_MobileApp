@@ -1,9 +1,9 @@
-import 'package:flix_time/ui/views/explore/exploreScreen.dart';
-import 'package:flix_time/ui/views/home/homeScreen.dart';
-import 'package:flix_time/ui/views/profile/profileScreen.dart';
-import 'package:flix_time/ui/views/watchList/watchListScreen.dart';
-import 'package:flix_time/utils/constants/colors.dart';
-import 'package:flix_time/utils/constants/sizes.dart';
+import 'package:FlixTime/ui/views/explore/exploreScreen.dart';
+import 'package:FlixTime/ui/views/home/homeScreen.dart';
+import 'package:FlixTime/ui/views/profile/profileScreen.dart';
+import 'package:FlixTime/ui/views/watchList/watchListScreen.dart';
+import 'package:FlixTime/utils/constants/colors.dart';
+import 'package:FlixTime/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

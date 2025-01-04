@@ -1,5 +1,8 @@
 {
   "hello": "hello",
+
+  "search": "Search",
+
   "home": "Home",
 
   "all": "All",
@@ -7,6 +10,11 @@
   "popularMovies": "Popular Movies",
 
   "explore": "Explore",
+
+  "movies": "Movies",
+  "recommendedMovies": "Recommended Movies",
+
+  "series": "Series",
 
 
   "watchList": "Watch List",

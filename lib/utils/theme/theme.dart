@@ -1,5 +1,5 @@
-import 'package:flix_time/utils/constants/colors.dart';
-import 'package:flix_time/utils/theme/custom_themes/bottom_navigation_theme.dart';
+import 'package:FlixTime/utils/constants/colors.dart';
+import 'package:FlixTime/utils/theme/custom_themes/bottom_navigation_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_themes/appbar_theme.dart';

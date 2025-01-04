@@ -1,4 +1,4 @@
-import 'package:flix_time/utils/constants/colors.dart';
+import 'package:FlixTime/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class FBottomNavigationBarTheme {
