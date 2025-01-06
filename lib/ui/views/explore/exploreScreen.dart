@@ -24,7 +24,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
     final localeManager = Provider.of<LocaleManager>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(localeManager.translate("explore"),),),
+      //extendBodyBehindAppBar: true,
+      appBar: AppBar(toolbarHeight: 0,),
+      //appBar: AppBar(title: Text(localeManager.translate("explore"),),),
       body: Column(
         children: [
           _movieSeriesButtons(context),

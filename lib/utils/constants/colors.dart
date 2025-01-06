@@ -29,6 +29,8 @@ class FColors{
   static const Color light = Color(0xFFF6F6F6);
   static const Color dark = Color(0xFF272727);
   static const Color primaryBackground = Color(0xFFF3F5FF);
+  static const Color darkBackground = Color(0xFF181818);
+  static const Color lightBackground = Color(0xFFF5F5F5);
 
   //Background Container Colors
   static const Color lightContainer = Color(0xFFF6F6F6);
@@ -50,7 +52,7 @@ class FColors{
   static const Color info = Color(0xFF1976D2);
 
   //Neutral Shades
-  static const Color black = Color(0xFF232323);
+  static const Color black = Color(0x00000000);
   static const Color darkerGrey = Color(0xFF4F4F4F);
   static const Color darkGrey = Color(0xFF939393);
   static const Color grey = Color(0xFFE0E0E0);

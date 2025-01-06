@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: const Text(FTexts.appName)),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(FSizes.md),
+          padding: const EdgeInsets.all(FSizes.sm),
           child: Column(
             children: [
               CustomCarouselSlider(imageList: imageList),

@@ -1,3 +1,4 @@
+import 'package:FlixTime/ui/views/explore/movieDetailsScreen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/entity/movie.dart';
@@ -22,152 +23,93 @@ class _MovieGridViewState extends State<MovieGridView> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     // Determine column count dynamically
-    int crossAxisCount = screenWidth > 600 ? 5 : 3;
+    int crossAxisCount = screenWidth > 600 ? 4 : 3;
 
     // Calculate each object size
     double itemSize = (screenWidth - (40 * (crossAxisCount - 1))) / crossAxisCount;
 
     return Expanded(
       child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
-          crossAxisSpacing: 5.0,
+          crossAxisSpacing: 0.0,
           mainAxisSpacing: 5.0,
           mainAxisExtent: 200
         ),
         itemCount: widget.movieItems.length,
         itemBuilder: (context, index) {
           Movie movie = widget.movieItems[index];
-          return Card(
-            elevation: 5,
-            color: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(FSizes.md),
-            ),
-            child: Stack(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(FSizes.md)),
-                        child: Image.network(
-                          movie.movieImageUrl,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        movie.movieName,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MovieDetailsScreen(movie: movie),
                 ),
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: FColors.black.withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(FSizes.borderRadiusMd),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.star, size: FSizes.iconSm, color: FColors.amber),
-                        SizedBox(width: 4),
-                        Text(
-                          movie.movieRating.toString(),
-                          style: TextStyle(color: FColors.white, fontSize: FSizes.fontSizeSm),
+              );
+            },
+            child: Card(
+              elevation: 3,
+              //color: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(FSizes.md),
+              ),
+              child: Stack(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(FSizes.md)),
+                          child: Image.network(
+                            movie.movieImageUrl,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
                         ),
-                      ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          movie.movieName,
+                          style: TextStyle(
+                            fontSize: FSizes.fontSizeSm,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    top: 5,
+                    right: 5,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: FColors.black.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(FSizes.borderRadiusMd),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.star, size: FSizes.iconSm, color: FColors.amber),
+                          SizedBox(width: 4),
+                          Text(
+                            movie.movieRating.toString(),
+                            style: TextStyle(color: FColors.white, fontSize: FSizes.fontSizeSm),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
-      
-      
-      
-      
-      
-      
-      
-      
-          /*
-          return Card(
-            elevation: 5,
-            color: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(FSizes.md),
-            ),
-            child: Stack(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(FSizes.md)),
-                        child: Image.network(
-                          movie.movieImageUrl,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        movie.movieName,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: FColors.black.withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(FSizes.borderRadiusMd),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.star, size: FSizes.iconSm, color: FColors.amber),
-                        SizedBox(width: 4),
-                        Text(
-                          movie.movieRating.toString(),
-                          style: TextStyle(color: FColors.white, fontSize: FSizes.fontSizeSm),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-          */
         },
       ),
     );

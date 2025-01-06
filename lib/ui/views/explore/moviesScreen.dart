@@ -24,10 +24,13 @@ class _MoviesScreenState extends State<MoviesScreen> {
     final localeManager = Provider.of<LocaleManager>(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(FSizes.md),
+        padding: const EdgeInsets.all(FSizes.sm),
         child: Column(
         children: [
-          CustomSearchBar(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: FSizes.sm),
+            child: CustomSearchBar(),
+          ),
           SizedBox(height: FSizes.md,),
           MoviesTitleRow(title: localeManager.translate("recommendedMovies"),),
           MovieGridView(movieItems: movieList,),

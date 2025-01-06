@@ -3,65 +3,100 @@ import 'package:flutter/material.dart';
 import '../../../../data/entity/movie.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../explore/movieDetailsScreen.dart';
 
 class ListViewMovie extends StatelessWidget {
   const ListViewMovie({
-    super.key, required this.movieList,
+    super.key,
+    required this.movieList,
   });
 
   final List<Movie> movieList;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 260,
+    return SizedBox(
+      height: 280,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        separatorBuilder: (context, index) => const SizedBox(width: FSizes.sm),
         itemCount: movieList.length,
         itemBuilder: (context, index) {
           final movie = movieList[index];
-          return Container(
-            width: 150,
-            decoration: BoxDecoration(
-              color: FColors.transparent,
-              borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: FColors.grey,
-                    borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
+          return SizedBox(
+            width: 160,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MovieDetailsScreen(movie: movie),
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
-                    child: Image.network(
-                      movie.movieImageUrl, width: 200, height: 200, fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes ?? 1)
-                                : null,
+                );
+              },
+              child: Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(FSizes.borderRadiusLg),
+                      ),
+                      child: Image.network(
+                        movie.movieImageUrl,
+                        height: 200,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                        errorBuilder: (context, error, stackTrace) => const Center(
+                          child: Icon(
+                            Icons.error,
+                            size: FSizes.iconLg,
+                            color: Colors.red,
                           ),
-                        );
-                      },
-                      errorBuilder: (context, error, stackTrace) =>
-                      const Center(
-                        child: Icon(Icons.error, size: 50, color: Colors.red),
+                        ),
                       ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.all(FSizes.sm),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            movie.movieName,
+                            style: TextStyle(
+                              fontSize: FSizes.fontSizeMd,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: FSizes.xs),
+                          Row(
+                            children: [
+                              const Icon(Icons.star, color: FColors.amber, size: FSizes.iconSm),
+                              const SizedBox(width: FSizes.xs),
+                              Text(
+                                '${movie.movieRating}',
+                                style: TextStyle(fontSize: FSizes.fontSizeSm, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 8),
-                Text(movie.movieName, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                SizedBox(height: 4),
-                Text('Rating: ${movie.movieRating}', style: TextStyle(fontSize: 14, color: Colors.grey)),
-              ],
+              ),
             ),
           );
         },
