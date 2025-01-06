@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/localization/localization_manager.dart';
+import '../../../../utils/theme/theme_manager.dart';
 
-class ListViewTitleRow extends StatelessWidget {
-  const ListViewTitleRow({
+class DetailsTitleRow extends StatelessWidget {
+  const DetailsTitleRow({
     super.key, required this.title,
   });
 
@@ -15,10 +16,11 @@ class ListViewTitleRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeManager = Provider.of<LocaleManager>(context);
+    final themeManager = Provider.of<ThemeManager>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style:Theme.of(context).textTheme.titleMedium!.apply(color: FColors.primary)),
+        Text(title, style: Theme.of(context).textTheme.headlineMedium,),
         GestureDetector(
           onTap: (){
 
@@ -27,15 +29,12 @@ class ListViewTitleRow extends StatelessWidget {
             children: [
               Text(
                 localeManager.translate("all"),
-                style: TextStyle(
-                  color: FColors.primary,
-                  fontSize: FSizes.fontSizeMd,
-                ),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               SizedBox(width: FSizes.xs,),
               Icon(Icons.arrow_right,
                 size: FSizes.iconMd,
-                color: FColors.primary,
+                color: FColors.white,
               ),
             ],
           ),

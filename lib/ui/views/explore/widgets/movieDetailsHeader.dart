@@ -46,8 +46,8 @@ class MovieDetailsHeader extends StatelessWidget {
                 begin: Alignment.center,
                 end: Alignment.bottomCenter,
                 colors: [
-                  FColors.dark.withOpacity(0.0),
-                  FColors.dark.withOpacity(1.0),
+                  FColors.darkBackground.withOpacity(0.0),
+                  FColors.darkBackground.withOpacity(1.0),
                 ],
               ),
             ),

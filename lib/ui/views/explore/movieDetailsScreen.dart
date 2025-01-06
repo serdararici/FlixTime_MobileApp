@@ -1,9 +1,13 @@
+import 'package:FlixTime/ui/views/explore/widgets/detailsTitleRow.dart';
 import 'package:FlixTime/ui/views/explore/widgets/movieDetailsHeader.dart';
 import 'package:FlixTime/utils/constants/colors.dart';
 import 'package:FlixTime/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../data/entity/movie.dart';
+import '../../../utils/localization/localization_manager.dart';
+import '../../../utils/theme/theme_manager.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   const MovieDetailsScreen({super.key, required this.movie});
@@ -20,8 +24,18 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   //when fetch data from api delete this list
   final List<String> categories = ["Action", "Comedy", "Drama", "Sci-Fi", "Horror"];
 
+  final List<String> cast = [
+    "John Doe",
+    "Jane Smith",
+    "Mike Johnsonkkkkkkkkkkkkkkkkkkkkkkk",
+    "Emily Davis",
+    "Chris Brown"
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final themeManager = Provider.of<ThemeManager>(context);
+    final localeManager = Provider.of<LocaleManager>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -54,7 +68,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   children: [
                     Text(
                       widget.movie.movieName,
-                      style: Theme.of(context).textTheme.headlineMedium?.apply(color: FColors.primary),
+                      style: Theme.of(context).textTheme.headlineLarge?.apply(color: FColors.primary),
                     ),
                     const SizedBox(height: FSizes.sm),
                     Row(
@@ -88,29 +102,32 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     const SizedBox(height: FSizes.md),
                     SizedBox(
                       height: 35,
-                      child: ListView.builder(
+                      child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemCount: categories.length,
+                        separatorBuilder: (context, index) => SizedBox(width: FSizes.sm), // Elemanlar arasına boşluk
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
-                              decoration: BoxDecoration(
-                                color: FColors.dark.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  categories[index],
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
+                          return Container(
+                            padding: EdgeInsets.symmetric(horizontal: FSizes.lg, vertical: FSizes.sm), // Daha dengeli padding
+                            decoration: BoxDecoration(
+                              color: FColors.dark.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
+                            ),
+                            child: Center(
+                              child: Text(
+                                categories[index],
+                                style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ),
                           );
                         },
                       ),
                     ),
+                    SizedBox(height: FSizes.md,),
+                    DetailsTitleRow(title: localeManager.translate("cast")),
+                    SizedBox(height: FSizes.sm,),
+                    _castListRow(),
+                    SizedBox(height: FSizes.md,)
                   ],
                 ),
               ),
@@ -120,4 +137,51 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
       ),
     );
   }
+
+  Container _castListRow() {
+    return Container(
+      height: 150,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: cast.length,
+        separatorBuilder: (context, index) => const SizedBox(width: 20,),
+        itemBuilder: (context, index) {
+          var item = cast[index];
+          return Column(
+            children: [
+              ClipOval(
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    /*
+                    image: DecorationImage(
+                      image: NetworkImage(item['iconPath']!), // Resim yolu
+                      fit: BoxFit.cover, // Görüntü dolgusunu sağlıyoruz
+                    ),
+
+                     */
+                    color: FColors.dark,
+                  ),
+                ),
+              ),
+              SizedBox(height: FSizes.sm),
+              SizedBox(
+                width: 80,
+                child: Text(
+                  item,
+                  style: Theme.of(context).textTheme.labelLarge,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
 }
+
+
