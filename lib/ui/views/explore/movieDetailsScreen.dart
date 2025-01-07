@@ -34,19 +34,28 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeManager = Provider.of<ThemeManager>(context);
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final localeManager = Provider.of<LocaleManager>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
           widget.movie.movieName,
+          style: TextStyle(
+            color: _isScrolled ? (isDarkMode ? FColors.white : FColors.dark) : Colors.white,
+          ),
         ),
         centerTitle: true,
-        backgroundColor: _isScrolled ?  FColors.dark : Colors.transparent,
+        backgroundColor: _isScrolled ? (isDarkMode ? FColors.dark : FColors.white) : Colors.transparent,
         elevation: _isScrolled ? 4.0 : 0.0,
-
+        iconTheme: IconThemeData(
+          color: _isScrolled ? (isDarkMode ? FColors.white : FColors.dark) : Colors.white,
+        ),
+        toolbarTextStyle: TextStyle(
+          color: _isScrolled ? (isDarkMode ? FColors.white : FColors.dark) : Colors.white,
+        ),
       ),
+
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
           if (notification.metrics.axis == Axis.vertical) {
@@ -105,10 +114,10 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemCount: categories.length,
-                        separatorBuilder: (context, index) => SizedBox(width: FSizes.sm), // Elemanlar arasına boşluk
+                        separatorBuilder: (context, index) => SizedBox(width: FSizes.sm),
                         itemBuilder: (context, index) {
                           return Container(
-                            padding: EdgeInsets.symmetric(horizontal: FSizes.lg, vertical: FSizes.sm), // Daha dengeli padding
+                            padding: EdgeInsets.symmetric(horizontal: FSizes.lg, vertical: FSizes.sm),
                             decoration: BoxDecoration(
                               color: FColors.dark.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(FSizes.borderRadiusLg),
@@ -116,7 +125,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             child: Center(
                               child: Text(
                                 categories[index],
-                                style: Theme.of(context).textTheme.bodySmall,
+                                style: Theme.of(context).textTheme.bodySmall!.apply(color: FColors.white),
                               ),
                             ),
                           );
@@ -127,7 +136,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     DetailsTitleRow(title: localeManager.translate("cast")),
                     SizedBox(height: FSizes.sm,),
                     _castListRow(),
-                    SizedBox(height: FSizes.md,)
+                    SizedBox(height: FSizes.md,),
+                    SizedBox(height: 500,)
                   ],
                 ),
               ),

@@ -14,6 +14,7 @@ class MovieDetailsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       height: (MediaQuery.of(context).size.height / 5) * 2,
       child: Stack(
@@ -45,9 +46,12 @@ class MovieDetailsHeader extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.center,
                 end: Alignment.bottomCenter,
-                colors: [
+                colors: isDarkMode ? [
                   FColors.darkBackground.withOpacity(0.0),
                   FColors.darkBackground.withOpacity(1.0),
+                ] : [
+                  FColors.lightBackground.withOpacity(0.0),
+                  FColors.lightBackground.withOpacity(1.0),
                 ],
               ),
             ),

@@ -16,7 +16,7 @@ class DetailsTitleRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeManager = Provider.of<LocaleManager>(context);
-    final themeManager = Provider.of<ThemeManager>(context);
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -34,7 +34,7 @@ class DetailsTitleRow extends StatelessWidget {
               SizedBox(width: FSizes.xs,),
               Icon(Icons.arrow_right,
                 size: FSizes.iconMd,
-                color: FColors.white,
+                color: isDarkMode ? FColors.white : FColors.black,
               ),
             ],
           ),
