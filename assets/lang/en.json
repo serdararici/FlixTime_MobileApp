@@ -13,6 +13,11 @@
 
   "movies": "Movies",
   "recommendedMovies": "Recommended Movies",
+  "errorLoadingMovies": "Failed to load movies. Please try again.",
+  "noMoviesAvailable": "No movies available at the moment.",
+
+
+
   "cast": "Cast",
 
   "series": "Series",

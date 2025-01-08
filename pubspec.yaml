@@ -35,6 +35,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   firebase_auth:
+  flutter_bloc:
 
   lottie:
   provider:

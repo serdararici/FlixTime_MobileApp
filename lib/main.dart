@@ -1,3 +1,4 @@
+import 'package:FlixTime/ui/cubit/movieScreenCubit.dart';
 import 'package:FlixTime/ui/views/explore/exploreScreen.dart';
 import 'package:FlixTime/ui/views/home/homeScreen.dart';
 import 'package:FlixTime/ui/views/mainScreen.dart';
@@ -5,6 +6,7 @@ import 'package:FlixTime/utils/localization/localization_manager.dart';
 import 'package:FlixTime/utils/theme/theme.dart';
 import 'package:FlixTime/utils/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +23,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => ThemeManager()),
       ChangeNotifierProvider(create: (_) => LocaleManager()),
+    ],
+    child: MultiBlocProvider(
+    providers: [
+    BlocProvider(create: (_) => MovieScreenCubit()),
     ],
 
     child: Consumer2<ThemeManager, LocaleManager>(
@@ -47,8 +53,9 @@ class MyApp extends StatelessWidget {
           ],
           home: MainScreen(),
         );
-      }
-    )
+      },
+    ),
+    ),
     );
   }
 }
